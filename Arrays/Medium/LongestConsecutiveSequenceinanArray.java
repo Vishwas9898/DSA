@@ -1,35 +1,37 @@
-package Arrays.Easy;
+package Arrays.Medium;
 
 import java.util.Scanner;
 
-public class MaximumConsecutiveOnes {
+public class LongestConsecutiveSequenceinanArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+
         int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        int res = MaxContinuosOnes(arr, n);
+        int res = Longest(arr, n);
 
         System.out.println(res);
 
     }
 
-    public static int MaxContinuosOnes(int[] arr, int n) {
+    public static int Longest(int[] arr, int n) {
         int count = 0;
         int maxcount = 0;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == 1) {
+        int left = 0;
+        int right = 1;
+        while (right < n) {
+            if (arr[left] == 1 + arr[right]) {
                 count++;
-                if (count > maxcount) {
-                    maxcount = count;
-                }
-
+                maxcount = Math.max(maxcount, count);
             } else {
                 count = 0;
             }
+            right++;
+            left++;
         }
         return maxcount;
     }
