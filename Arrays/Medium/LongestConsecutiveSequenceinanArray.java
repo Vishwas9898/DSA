@@ -1,5 +1,6 @@
 package Arrays.Medium;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class LongestConsecutiveSequenceinanArray {
@@ -21,17 +22,22 @@ public class LongestConsecutiveSequenceinanArray {
     public static int Longest(int[] arr, int n) {
         int count = 0;
         int maxcount = 0;
-        int left = 0;
-        int right = 1;
-        while (right < n) {
-            if (arr[left] == 1 + arr[right]) {
-                count++;
-                maxcount = Math.max(maxcount, count);
-            } else {
-                count = 0;
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0;i<n;i++){
+            set.add(arr[i]);
+        }
+        for(int el : set){
+            if(!set.contains(el-1)){
+                count =1;
+                int x=el;
+                while(set.contains(el+1)){
+                    count++;
+                    el++;
+                }
+                if(maxcount<count){
+                    maxcount = count;
+                }
             }
-            right++;
-            left++;
         }
         return maxcount;
     }
