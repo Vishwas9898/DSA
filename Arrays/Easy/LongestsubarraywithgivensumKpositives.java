@@ -19,10 +19,10 @@ public class LongestsubarraywithgivensumKpositives {
     public static int longest(int[] arr, int n, int d) {
         int right = 0;
         int left = 0;
-        int sum = 0;
+        int sum = arr[0];
         int maxlen = 0;
         while (right < n) {
-            while (left > 0 && sum > d) {
+            while (sum > d && left <= right) {
                 sum -= arr[left];
                 left++;
             }

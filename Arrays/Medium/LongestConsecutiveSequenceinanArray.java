@@ -23,18 +23,18 @@ public class LongestConsecutiveSequenceinanArray {
         int count = 0;
         int maxcount = 0;
         HashSet<Integer> set = new HashSet<>();
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             set.add(arr[i]);
         }
-        for(int el : set){
-            if(!set.contains(el-1)){
-                count =1;
-                int x=el;
-                while(set.contains(el+1)){
+        for (int el : set) {
+            if (!set.contains(el - 1)) {
+                count = 1;
+                int x = el;
+                while (set.contains(el + 1)) {
                     count++;
                     el++;
                 }
-                if(maxcount<count){
+                if (maxcount < count) {
                     maxcount = count;
                 }
             }
